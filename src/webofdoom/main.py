@@ -1,4 +1,5 @@
 import click
+from .Worker import Worker
 
 @click.group(invoke_without_command=True)
 @click.option("-t", default="http://localhost:3000/", help="Target url or IP address Ex: (http://localhost:3000/)")
@@ -29,5 +30,8 @@ def cli(t: str, w: str):
     print("\n")
 
     # Send requests.
+    work = Worker(t, w)
 
+    # Run.
+    work.run()
     pass
